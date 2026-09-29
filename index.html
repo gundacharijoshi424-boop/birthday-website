@@ -1,255 +1,325 @@
-index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You, My Baby ❤️</title>
+<title>Happy Birthday Gautami 🎂</title>
 
 <style>
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fff7fb;
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
 }
 
-.container {
-    text-align: center;
-    width: 90%;
+/* FIRST PAGE */
+#home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+
+  background:
+    linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.45)),
+    url("background.jpg") center/cover no-repeat;
 }
 
-h1 {
-    color: #e85d8e;
-    font-size: 25px;
-    margin-bottom: 35px;
+#home h1 {
+  font-size: 42px;
+  text-shadow: 0 4px 15px #000;
+}
+
+#home p {
+  margin-top: 15px;
+  font-size: 19px;
+  text-shadow: 0 3px 10px #000;
 }
 
 .gift {
-    width: 150px;
-    height: 120px;
-    background: #ff8fb3;
-    position: relative;
-    margin: auto;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 1s;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  font-size: 90px;
+  margin-top: 35px;
+  cursor: pointer;
+  animation: float 1.8s infinite ease-in-out;
 }
 
-.gift::before {
-    content: "";
-    position: absolute;
-    width: 25px;
-    height: 120px;
-    background: #ffd1df;
-    left: 62px;
-    top: 0;
+.tap {
+  margin-top: 12px;
+  font-size: 16px;
 }
 
-.lid {
-    position: absolute;
-    width: 170px;
-    height: 35px;
-    background: #ff719e;
-    left: -10px;
-    top: -30px;
-    border-radius: 7px;
-    transition: 1s;
+/* MESSAGE */
+#message {
+  display: none;
+  height: 100vh;
+  padding: 35px 20px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg,#6a1b9a,#ec407a);
+  overflow-y: auto;
 }
 
-.ribbon {
-    position: absolute;
-    width: 25px;
-    height: 35px;
-    background: #ffd1df;
-    left: 62px;
-    top: -30px;
+.cake {
+  font-size: 65px;
+  animation: bounce 1.5s infinite;
 }
 
-.bow {
-    position: absolute;
-    left: 53px;
-    top: -55px;
-    font-size: 45px;
+#message h1 {
+  margin: 15px 0 25px;
+  font-size: 34px;
 }
 
-.message {
-    display: none;
-    animation: fade 2s ease;
-}
-
-.message h2 {
-    color: #e85d8e;
-    font-size: 27px;
-}
-
-.message p {
-    color: #555;
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-.flowers {
-    font-size: 55px;
-    margin: 20px 0;
-    animation: float 2s infinite alternate;
+.card {
+  max-width: 600px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 25px;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+  line-height: 1.7;
+  font-size: 18px;
 }
 
 button {
-    border: none;
-    background: #ff719e;
-    color: white;
-    padding: 13px 25px;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
+  margin-top: 25px;
+  padding: 14px 25px;
+  border: none;
+  border-radius: 30px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #6a1b9a;
+  background: white;
+  cursor: pointer;
 }
 
-@keyframes fade {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* CALENDAR */
+#calendar {
+  display: none;
+  height: 100vh;
+  padding: 35px 15px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg,#141e30,#243b55);
+  overflow-y: auto;
 }
 
+#calendar h1 {
+  font-size: 32px;
+}
+
+#calendar h2 {
+  margin: 10px 0 25px;
+}
+
+.weekdays,
+.days {
+  max-width: 500px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap: 6px;
+}
+
+.weekdays div {
+  padding: 8px 2px;
+  font-weight: bold;
+}
+
+.days div {
+  padding: 14px 3px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.12);
+}
+
+.days .birthday {
+  background: #ff4ecd;
+  box-shadow: 0 0 20px #ff4ecd;
+  font-weight: bold;
+  animation: glow 1s infinite alternate;
+}
+
+/* ANIMATIONS */
 @keyframes float {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-10px);
-    }
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
 
-.heart {
-    position: fixed;
-    font-size: 25px;
-    animation: heart 4s linear forwards;
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 
-@keyframes heart {
-    0% {
-        bottom: -30px;
-        opacity: 1;
-    }
-    100% {
-        bottom: 110%;
-        opacity: 0;
-        transform: rotate(360deg);
-    }
+@keyframes glow {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- HOME -->
+<section id="home">
 
-    <h1>For you, my baby ❤️</h1>
+  <h1>🎉 Happy Birthday! 🎉</h1>
 
-    <div class="gift" onclick="openGift()">
-        <div class="lid"></div>
-        <div class="ribbon"></div>
-        <div class="bow">🎀</div>
-    </div>
+  <p>A special surprise is waiting for you ✨</p>
 
-    <div class="message" id="message">
+  <div class="gift" onclick="openGift()">🎁</div>
 
-        <div class="flowers">
-            🌷🌸🌹🌷
-        </div>
+  <div class="tap">Tap the gift to open 💜</div>
 
-        <h2>A Little Gift For You ❤️</h2>
+</section>
 
-        <p>
-            You don't need an expensive gift<br>
-            to make someone feel special.
-        </p>
 
-        <p>
-            Sometimes a little effort,<br>
-            a little love and a little surprise<br>
-            are more than enough. 🥰
-        </p>
+<!-- MESSAGE -->
+<section id="message">
 
-        <p>
-            I made this just for you. ❤️
-        </p>
+  <div class="cake">🎂</div>
 
-        <button onclick="moreHearts()">One More Surprise 💕</button>
+  <h1>Happy Birthday, Gautami! 💜</h1>
 
-    </div>
+  <div class="card">
 
-</div>
+    <p>
+      Wishing you a very Happy Birthday, Gautami! 🎉
+    </p>
+
+    <br>
+
+    <p>
+      May your special day be filled with happiness,
+      laughter and beautiful memories. ✨
+    </p>
+
+    <br>
+
+    <p>
+      May the coming year bring you lots of
+      wonderful moments, success and happiness. 🌸
+    </p>
+
+    <br>
+
+    <p>
+      Keep smiling and keep shining! 💫
+    </p>
+
+  </div>
+
+  <button onclick="showCalendar()">
+    🎁 One More Surprise
+  </button>
+
+</section>
+
+
+<!-- CALENDAR -->
+<section id="calendar">
+
+  <h1>🎉 One More Surprise 🎉</h1>
+
+  <h2>September 2026 📅</h2>
+
+  <div class="weekdays">
+    <div>Sun</div>
+    <div>Mon</div>
+    <div>Tue</div>
+    <div>Wed</div>
+    <div>Thu</div>
+    <div>Fri</div>
+    <div>Sat</div>
+  </div>
+
+  <div class="days">
+
+    <div></div>
+    <div></div>
+
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+
+    <div>13</div>
+    <div>14</div>
+    <div>15</div>
+    <div>16</div>
+    <div>17</div>
+    <div>18</div>
+    <div>19</div>
+
+    <div>20</div>
+    <div>21</div>
+    <div>22</div>
+    <div>23</div>
+    <div>24</div>
+    <div>25</div>
+    <div>26</div>
+
+    <div>27</div>
+    <div>28</div>
+    <div>29</div>
+    <div class="birthday">30 💜</div>
+
+  </div>
+
+  <br>
+
+  <h2>💜 30 September 2026 💜</h2>
+
+</section>
+
 
 <script>
+const songs = [
+  "song1.mp3",
+  "song2.mp3",
+  "song3.mp3"
+];
+
+let song = 0;
+const music = new Audio();
+music.volume = 0.6;
+
+function playMusic() {
+  music.src = songs[song];
+
+  music.play().catch(() => {});
+
+  music.onended = () => {
+    song++;
+    if (song >= songs.length) song = 0;
+    playMusic();
+  };
+}
 
 function openGift() {
-
-    document.querySelector(".gift").style.transform =
-        "translateY(-20px) scale(0.7)";
-
-    document.querySelector(".lid").style.transform =
-        "translateY(-80px) rotate(-15deg)";
-
-    setTimeout(function() {
-
-        document.querySelector(".gift").style.display = "none";
-
-        document.querySelector(".message").style.display = "block";
-
-        createHearts();
-
-    }, 900);
+  document.getElementById("home").style.display = "none";
+  document.getElementById("message").style.display = "block";
+  playMusic();
 }
 
-function createHearts() {
-
-    for (let i = 0; i < 15; i++) {
-
-        setTimeout(function() {
-
-            const heart = document.createElement("div");
-
-            heart.className = "heart";
-
-            heart.innerHTML = ["❤️","💕","💗","💖","💓"][
-                Math.floor(Math.random() * 5)
-            ];
-
-            heart.style.left =
-                Math.random() * 100 + "vw";
-
-            heart.style.animationDuration =
-                (3 + Math.random() * 3) + "s";
-
-            document.body.appendChild(heart);
-
-            setTimeout(function() {
-                heart.remove();
-            }, 6000);
-
-        }, i * 200);
-    }
+function showCalendar() {
+  document.getElementById("message").style.display = "none";
+  document.getElementById("calendar").style.display = "block";
 }
-
-function moreHearts() {
-    createHearts();
-}
-
 </script>
 
 </body>
