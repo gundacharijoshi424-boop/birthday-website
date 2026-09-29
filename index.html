@@ -1,0 +1,256 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You, My Baby ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff7fb;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+}
+
+h1 {
+    color: #e85d8e;
+    font-size: 25px;
+    margin-bottom: 35px;
+}
+
+.gift {
+    width: 150px;
+    height: 120px;
+    background: #ff8fb3;
+    position: relative;
+    margin: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 1s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.gift::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 120px;
+    background: #ffd1df;
+    left: 62px;
+    top: 0;
+}
+
+.lid {
+    position: absolute;
+    width: 170px;
+    height: 35px;
+    background: #ff719e;
+    left: -10px;
+    top: -30px;
+    border-radius: 7px;
+    transition: 1s;
+}
+
+.ribbon {
+    position: absolute;
+    width: 25px;
+    height: 35px;
+    background: #ffd1df;
+    left: 62px;
+    top: -30px;
+}
+
+.bow {
+    position: absolute;
+    left: 53px;
+    top: -55px;
+    font-size: 45px;
+}
+
+.message {
+    display: none;
+    animation: fade 2s ease;
+}
+
+.message h2 {
+    color: #e85d8e;
+    font-size: 27px;
+}
+
+.message p {
+    color: #555;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.flowers {
+    font-size: 55px;
+    margin: 20px 0;
+    animation: float 2s infinite alternate;
+}
+
+button {
+    border: none;
+    background: #ff719e;
+    color: white;
+    padding: 13px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+.heart {
+    position: fixed;
+    font-size: 25px;
+    animation: heart 4s linear forwards;
+}
+
+@keyframes heart {
+    0% {
+        bottom: -30px;
+        opacity: 1;
+    }
+    100% {
+        bottom: 110%;
+        opacity: 0;
+        transform: rotate(360deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>For you, my baby ❤️</h1>
+
+    <div class="gift" onclick="openGift()">
+        <div class="lid"></div>
+        <div class="ribbon"></div>
+        <div class="bow">🎀</div>
+    </div>
+
+    <div class="message" id="message">
+
+        <div class="flowers">
+            🌷🌸🌹🌷
+        </div>
+
+        <h2>A Little Gift For You ❤️</h2>
+
+        <p>
+            You don't need an expensive gift<br>
+            to make someone feel special.
+        </p>
+
+        <p>
+            Sometimes a little effort,<br>
+            a little love and a little surprise<br>
+            are more than enough. 🥰
+        </p>
+
+        <p>
+            I made this just for you. ❤️
+        </p>
+
+        <button onclick="moreHearts()">One More Surprise 💕</button>
+
+    </div>
+
+</div>
+
+<script>
+
+function openGift() {
+
+    document.querySelector(".gift").style.transform =
+        "translateY(-20px) scale(0.7)";
+
+    document.querySelector(".lid").style.transform =
+        "translateY(-80px) rotate(-15deg)";
+
+    setTimeout(function() {
+
+        document.querySelector(".gift").style.display = "none";
+
+        document.querySelector(".message").style.display = "block";
+
+        createHearts();
+
+    }, 900);
+}
+
+function createHearts() {
+
+    for (let i = 0; i < 15; i++) {
+
+        setTimeout(function() {
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.innerHTML = ["❤️","💕","💗","💖","💓"][
+                Math.floor(Math.random() * 5)
+            ];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (3 + Math.random() * 3) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(function() {
+                heart.remove();
+            }, 6000);
+
+        }, i * 200);
+    }
+}
+
+function moreHearts() {
+    createHearts();
+}
+
+</script>
+
+</body>
+</html>
